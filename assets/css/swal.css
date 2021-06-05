@@ -1,0 +1,20 @@
+.swal-modal {
+  background-color: #202442;
+}
+
+.swal-title {
+  color: #888ec7;
+}
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.swal-footer button {
+  background-color: #41cd7d;
+}
+
+.swal-footer button:hover {
+  background-color: #68eba1 !important;
+}

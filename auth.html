@@ -9,12 +9,14 @@
     <!-- Bootstrap v4.6.0 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <!-- Main CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/auth-page.css">
+    <link rel="stylesheet" href="./assets/css/swal.css">
     <!-- SweetAlert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <title>Sign Up</title>
+    <title>Balance List | Auth</title>
 </head>
 
 <body>
@@ -47,7 +49,8 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="button" id="btnAuth" class="btn btn-outline btn-lg block mt-5 mb-5">Sign
+                            <button type="button" id="btnAuth" class="btn btn-outline btn-lg block mt-5 mb-5"
+                                onclick="signIn()">Sign
                                 In</button>
                         </div>
                     </div>
@@ -69,6 +72,7 @@
     <!-- Firebase JS -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
     <!-- Init JS -->
     <script src="./assets/js/init.js"></script>
     <!-- Auth JS -->
@@ -76,7 +80,6 @@
 
     <script>
         $(document).on('click', 'a', function () {
-            console.log(this.id);
             authSelection(this.id);
         })
     </script>

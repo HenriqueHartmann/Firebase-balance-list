@@ -1,3 +1,4 @@
+const firestore = firebase.firestore();
 let authState = 1;
 
 function authSelection(id) {
@@ -40,6 +41,7 @@ function authSelection(id) {
 
     // change button
     document.getElementById("btnAuth").innerHTML = "Sign Up";
+    document.getElementById("btnAuth").setAttribute("onclick", "signUp()");
 
     // change state
     authState = 0;
@@ -62,4 +64,108 @@ function authSelection(id) {
 
   // add class auth-selected
   document.getElementById(id).setAttribute("class", cl);
+}
+
+async function addProfile(profile) {
+  await firestore.collection("profile").add(profile);
+}
+
+function signUp() {
+  const fullname = document.getElementById("fullname").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (email == "" || password == "" || fullname == "") {
+    swal({
+      icon: "error",
+      title: "You need to fill all fields",
+    });
+  } else {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const profile = {
+          fullname: fullname,
+          uid: firebase.auth().currentUser.uid,
+        };
+        addProfile(profile);
+
+        swal({
+          title: "Sign Up was successful",
+        }).then(() => {
+          setTimeout(() => {
+            window.location.replace("index.html");
+          }, 300);
+        });
+      })
+      .catch((error) => {
+        let errMessage = "";
+
+        switch (error.code) {
+          case "auth/weak-password":
+            errMessage = "Weak password";
+            break;
+
+          default:
+            errMessage = error.message;
+            break;
+        }
+        swal({
+          icon: "error",
+          title: errMessage,
+        });
+      });
+  }
+}
+
+function signIn() {
+  if (firebase.auth().currentUser) {
+    firebase.auth().signOut();
+  }
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (email == "" || password == "") {
+    swal({
+      icon: "error",
+      title: "You need to fill both fields",
+    });
+  } else {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        swal({
+          title: "Login was successful",
+        }).then(() => {
+          setTimeout(() => {
+            window.location.replace("index.html");
+          }, 300);
+        });
+      })
+      .catch((error) => {
+        let swalConf = {};
+        swalConf["icon"] = "error";
+
+        switch (error.code) {
+          case "auth/wrong-password":
+            swalConf["title"] = "Wrong password";
+            break;
+          case "auth/invalid-email":
+            swalConf["title"] = "Invalid E-Mail";
+            break;
+          case "auth/user-not-found":
+            swalConf["title"] = "User not found";
+            authSelection("authSignUp");
+            break;
+          default:
+            swalConf["title"] = error.message;
+            break;
+        }
+
+        swal(swalConf);
+      });
+  }
 }
