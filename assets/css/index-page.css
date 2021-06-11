@@ -211,7 +211,7 @@ a:focus {
   background-color: #223442 !important;
 }
 
-#itemList {
+#itemTable {
   max-height: 15em;
   overflow-y: scroll;
 }

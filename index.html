@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label for="action-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="action-text"></textarea>
+                            <input type="text" class="form-control" id="action-text">
                         </div>
                     </form>
                 </div>
@@ -187,80 +187,42 @@
                             <div class="card shadow">
                                 <h3 class="card-title text-center mt-3">List</h3>
                                 <div class="card-body">
-                                    <ul id="itemList" class="list-group list-group-flush">
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between">
-                                            <div>
-                                                Income
-                                            </div>
-                                            <div>
-                                                400
-                                            </div>
-                                            <div>
-                                                Bolsa de Estudos
-                                            </div>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                        </li>
-                                    </ul>
+                                    <table id="itemTable" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Income</td>
+                                                <td>400</td>
+                                                <td>Bolsa de Estudos</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Expense</td>
+                                                <td>60</td>
+                                                <td>Mei</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Income</td>
+                                                <td>70</td>
+                                                <td>Mesada</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
