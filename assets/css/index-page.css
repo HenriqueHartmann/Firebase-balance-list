@@ -183,6 +183,7 @@ a:focus {
 
 #contentPage .title {
   color: #fff;
+  margin-left: 1em !important;
 }
 
 #contentPage .chart {
@@ -194,5 +195,14 @@ a:focus {
 }
 
 #legendChart .bg-dark {
+  background-color: #223442 !important;
+}
+
+#actionBtn {
+  display: flex;
+  justify-content: center;
+}
+
+#actionBtn .btn-dark {
   background-color: #223442 !important;
 }
