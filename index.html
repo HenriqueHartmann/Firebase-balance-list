@@ -52,12 +52,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="value-action" class="col-form-label">Value:</label>
-                            <input type="number" class="form-control" id="value-action">
+                            <label for="amount-action" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount-action" required>
                         </div>
                         <div class="form-group">
-                            <label for="action-text" class="col-form-label">Message:</label>
-                            <input type="text" class="form-control" id="action-text">
+                            <label for="action-text" class="col-form-label">Description:</label>
+                            <input type="text" class="form-control" id="action-text" required>
                         </div>
                     </form>
                 </div>
@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="profile.html">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" onclick="signOut()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -135,9 +135,9 @@
                                     user@mail.com
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="profile.html">Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Sign Out</a>
+                                    <a class="dropdown-item" href="#" onclick="signOut()">Sign Out</a>
                                 </div>
                             </li>
                         </ul>
@@ -155,7 +155,7 @@
                                 <div class="card bg-success shadow">
                                     <div class="card-body">
                                         <h5 class="card-title">Incomes</h5>
-                                        <p class="card-text">R$400,00</p>
+                                        <p id="qtdInc" class="card-text">R$0,00</p>
                                     </div>
                                 </div>
                             </div>
@@ -163,15 +163,7 @@
                                 <div class="card bg-danger shadow">
                                     <div class="card-body">
                                         <h5 class="card-title">Expenses</h5>
-                                        <p class="card-text">R$92,00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card bg-dark shadow">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Balance</h5>
-                                        <p class="card-text">R$4500,00</p>
+                                        <p id="qtdExp" class="card-text">R$0,00</p>
                                     </div>
                                 </div>
                             </div>
@@ -183,49 +175,29 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row mt-5">
+                        <!-- Table -->
                         <div class="col col-9">
                             <div class="card shadow">
                                 <h3 class="card-title text-center mt-3">List</h3>
                                 <div class="card-body">
-                                    <table id="itemTable" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Type</th>
-                                                <th>Value</th>
-                                                <th>Description</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Income</td>
-                                                <td>400</td>
-                                                <td>Bolsa de Estudos</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Expense</td>
-                                                <td>60</td>
-                                                <td>Mei</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Income</td>
-                                                <td>70</td>
-                                                <td>Mesada</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                        <table id="itemTable" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Type</th>
+                                                    <th>Value</th>
+                                                    <th>Description</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tableBody">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Account Form -->
                         <div class="col col-3">
                             <div class="card shadow">
                                 <h3 class="card-title text-center mt-3">Action</h3>
@@ -258,7 +230,6 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="./assets/js/chart.js"></script>
     <!-- Init JS -->
     <script src="./assets/js/init.js"></script>
     <!-- App JS-->
@@ -272,7 +243,7 @@
             });
 
             $('#accBtn').on('click', function () {
-                $('#value-action').val('');
+                $('#amount-action').val('');
                 $('#action-text').val('');
             });
 
@@ -280,15 +251,15 @@
                 var modal = $(this);
 
                 $('input[type=radio').on('click', function () {
-                    action = $('input[type=radio]:checked').val();
+                    type = $('input[type=radio]:checked').val();
                 });
 
                 $('#saveAction').on('click', function (event) {
-                    let action = $('input[type=radio]:checked').val();
-                    let value = $('#value-action').val();
+                    let type = $('input[type=radio]:checked').val();
+                    let amount = parseFloat($('#amount-action').val());
                     let text = $('#action-text').val();
 
-                    formBalance(action, value, text);
+                    addRecord(type, amount, text);
                     modal.modal('hide');
                 });
 
