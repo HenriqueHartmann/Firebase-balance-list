@@ -57,6 +57,7 @@ function authSelection(id) {
 
     // change button
     document.getElementById("btnAuth").innerHTML = "Sign In";
+    document.getElementById("btnAuth").setAttribute("onclick", "signIn()");
 
     // change state
     authState = 1;
@@ -92,10 +93,11 @@ function signUp() {
         addProfile(profile);
 
         swal({
+          icon: "success",
           title: "Sign Up was successful",
         }).then(() => {
           setTimeout(() => {
-            window.location.replace("index.html");
+            //window.location.replace("index.html");
           }, 300);
         });
       })
@@ -138,6 +140,7 @@ function signIn() {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         swal({
+          icon: "success",
           title: "Login was successful",
         }).then(() => {
           setTimeout(() => {
