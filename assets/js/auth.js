@@ -43,6 +43,31 @@ function authSelection(id) {
     document.getElementById("btnAuth").innerHTML = "Sign Up";
     document.getElementById("btnAuth").setAttribute("onclick", "signUp()");
 
+    /*
+      <div id="forms">
+        <div id="fullnameForm" class="form-group mt-5">
+          <label for="fullname">FULLNAME</label>
+          <input id="fullname" type="text" autocomplete="nope" name="fullname"
+              placeholder="Enter your full name" class="form-control-plaintext">
+        </div>
+        <div class="form-group mt-5">
+          <label for="email">E-MAIL</label>
+          <input id="email" type="text" class="form-control-plaintext" autocomplete="off"
+              name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group mt-5">
+            <label for="password">PASSWORD</label>
+            <input id="password" type="password" class="form-control-plaintext" name="password"
+                placeholder="********">
+        </div>
+      </div>
+      <div class="text-center">
+          <button type="button" id="btnAuth" class="btn btn-outline btn-lg block mt-5 mb-5"
+              onclick="signUp()">Sign
+              Up</button>
+      </div>
+    */
+
     // change state
     authState = 0;
   }
@@ -58,6 +83,26 @@ function authSelection(id) {
     // change button
     document.getElementById("btnAuth").innerHTML = "Sign In";
     document.getElementById("btnAuth").setAttribute("onclick", "signIn()");
+
+    /*
+      <div id="forms">
+        <div class="form-group mt-5">
+          <label for="email">E-MAIL</label>
+          <input id="email" type="text" class="form-control-plaintext" autocomplete="off"
+              name="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group mt-5">
+            <label for="password">PASSWORD</label>
+            <input id="password" type="password" class="form-control-plaintext" name="password"
+                placeholder="********">
+        </div>
+      </div>
+      <div class="text-center">
+          <button type="button" id="btnAuth" class="btn btn-outline btn-lg block mt-5 mb-5"
+              onclick="signIn()">Sign
+              In</button>
+      </div>
+    */
 
     // change state
     authState = 1;
@@ -97,7 +142,7 @@ function signUp() {
           title: "Sign Up was successful",
         }).then(() => {
           setTimeout(() => {
-            //window.location.replace("index.html");
+            window.location.replace("index.html");
           }, 300);
         });
       })

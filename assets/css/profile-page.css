@@ -1,0 +1,22 @@
+#content {
+  width: 100%;
+}
+
+#contentCard {
+  max-width: 70vh;
+  margin: 0 auto;
+}
+
+#btnParent {
+  display: flex;
+  justify-content: center;
+}
+
+#btnParent .btn-dark {
+  background-color: #223442 !important;
+}
+
+#btnParent .btn-dark:hover {
+  background-color: #2a5159 !important;
+  border-color: #264a52;
+}
